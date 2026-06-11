@@ -7,7 +7,7 @@
 
     <h1>Tambah Prodi</h1>
 
-    <form action="/prodi" method="POST">
+    <form action="{{ route('prodi.index')}}" method="POST">
         @csrf
         <div>
             <label>Jurusan</label>

@@ -9,9 +9,10 @@ class JurusanController extends Controller
 {
     public function index()
     {
+        $title ='Jurusan';
         $jurusans = Jurusan::all();
 
-        return view('jurusan.index', compact('jurusans'));
+        return view('jurusan.index', compact('jurusans','title'));
     }
 
     public function create()
@@ -25,7 +26,7 @@ class JurusanController extends Controller
             'nama_jurusan' => $request->nama_jurusan
         ]);
 
-        return redirect('/jurusan');
+        return redirect()->route('jurusan.index');
     }
 
     public function edit($id)
@@ -43,7 +44,7 @@ class JurusanController extends Controller
             'nama_jurusan' => $request->nama_jurusan
         ]);
 
-        return redirect('/jurusan');
+        return redirect()->route('jurusan.index');
     }
 
     public function destroy($id)
@@ -52,6 +53,6 @@ class JurusanController extends Controller
 
         $jurusan->delete();
 
-        return redirect('/jurusan');
+        return redirect()->route('jurusan.index');
     }
 }

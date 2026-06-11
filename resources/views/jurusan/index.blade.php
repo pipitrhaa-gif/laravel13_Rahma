@@ -1,3 +1,4 @@
+
 @extends('layout.app')
 @section('content')
 <div class="container-fluid">
@@ -16,7 +17,7 @@
                 Data Jurusan
             </h6>
 
-            <a href="tambah_jurusan.html" class="btn btn-primary btn-sm">
+            <a href="{{ route('jurusan.create') }}" class="btn btn-primary btn-sm">
                 <i class="fas fa-plus"></i>
                 Tambah Jurusan
             </a>
@@ -36,23 +37,24 @@
                     </thead>
 
                     <tbody>
-                          @foreach($jurusans as $item)
+
+                           @foreach($jurusans as $item)
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $item->nama_jurusan }}</td>
             <td>
 
-                <a href="/jurusan/{{ $item->id }}/edit" class="btn btn-warning btn-sm">
+                <a href="{{ route('jurusan.edit', $item->id) }}""   class="btn btn-warning btn-sm">
                     Edit
                 </a>
 
-                <form action="/jurusan/{{ $item->id }}"
-                      method="POST">
+                <form action="{{ route('jurusan.destroy', $item->id) }}"
+                      method="POST" style="display:inline;">
 
                     @csrf
                     @method('DELETE')
 
-                    <button type="submit" class="btn btn-danger btn-sm">
+                    <button type="submit" class="btn btn-danger btn-sm"> 
                         Hapus
                     </button>
 
@@ -62,7 +64,7 @@
         </tr>
         @endforeach
 
-                      
+                       
                     </tbody>
 
                 </table>
@@ -74,7 +76,3 @@
 
 </div>
 @endsection
-
-
-
-
